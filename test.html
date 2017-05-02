@@ -1,0 +1,38 @@
+<!doctype html>
+<html ng-app="MusicApp">
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="src/app.js"></script>
+</head>
+
+<body ng-controller="MainCtrl">
+        Filter:
+        <input type="text" value="Name" ng-model="filterbyName" placeholder="Search By Track Name" />
+                <input type="text" value="Name" ng-model="filterbyGeneres" placeholder="Search Generes" />
+
+
+<table>
+	<thead>
+		<tr>
+			<th>No</th>
+			<th>Name</th>
+			<th>rating</th>
+			<th>Generes</th>
+
+
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="user in users.results | filter:filterbyName">
+			<td>{{user.id}}</td>
+			<td>{{user.title}}</td>
+			<td>{{user.rating}}</td>
+			<td ng-repeat="teja in user.genres | filter:filterbyGeneres">{{teja.name}}</td>
+			<td><button type="button" ng-click="setUserData(user.id)">Info</button></td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>
